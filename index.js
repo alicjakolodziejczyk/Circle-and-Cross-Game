@@ -8,7 +8,7 @@ for (var i = 0; i < board.length; i++) {
 
 function clearBeforeGame(){
   for(let i=0; i < 9; i++){
-    if(document.getElementsByClassName("box")[i].hasAttribute(onclick)){
+    if(document.getElementsByClassName("box")[i].hasAttribute("onclick")){
       document.getElementsByClassName("box")[i].setAttribute("onClick", "writeSign(this.id)");
     }
     if(document.getElementsByClassName("box")[i].hasChildNodes()){
@@ -17,8 +17,8 @@ function clearBeforeGame(){
     for(let i=0; i<9; i++){
       board[Math.floor(i/3)][i%3] = 0;
     }
-    document.getElementById("title").innerHTML = "Tic Tac Toe";
   }
+  document.getElementById("title").innerHTML = "Tic Tac Toe";
 }
 
 
@@ -52,6 +52,11 @@ function writeSign(id){
       document.getElementById("title").innerHTML = "It's a draw";
     }else {
       document.getElementById("title").innerHTML = "The winner is " + winner;
+    }
+    for(let i=0; i < 9; i++){
+      if(document.getElementsByClassName("box")[i].hasAttribute("onclick")){
+        document.getElementsByClassName("box")[i].removeAttribute("onclick");
+      }
     }
   }
   
